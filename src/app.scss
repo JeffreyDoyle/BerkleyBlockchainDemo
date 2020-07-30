@@ -1,0 +1,102 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+
+    background: rgb(50,66,255);
+    background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+
+    color: white;
+}
+
+.AppTitle {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    text-decoration: underline;
+}
+
+.AppUserInfo {
+    display: flex;
+    flex-direction: row;
+    button {
+        margin-left: 1rem;
+    }
+    margin-bottom: 3rem;
+}
+
+.AppMintNFT {
+    button {
+        margin-right: 1rem;
+        -webkit-appearance: none;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    input {
+        -webkit-appearance: none;
+        padding: 0.2rem;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        width: 20rem;
+    }
+    margin-bottom: 3rem;
+}
+
+.AppMyNFT {
+    h2 {
+        text-decoration: underline;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 3rem;
+}
+
+.AppReadNFT {
+    button {
+        margin-right: 1rem;
+        -webkit-appearance: none;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    input {
+        -webkit-appearance: none;
+        padding: 0.2rem;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        width: 20rem;
+    }
+    margin-bottom: 3rem;
+}
+
+.TheirNFT {
+    h2 {
+        text-decoration: underline;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

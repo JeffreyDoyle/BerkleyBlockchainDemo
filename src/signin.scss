@@ -1,0 +1,29 @@
+.SignInContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+
+    // background: rgb(255,60,60);
+    // background: linear-gradient(90deg, rgba(255,60,60,1) 0%, rgba(82,110,252,1) 40%, rgba(39,248,255,1) 100%);
+    background: rgb(50,66,255);
+    background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+}
+
+.SignInTitle {
+    color: white;
+}
+
+.SignInButton {
+    -webkit-appearance: none;
+    border: none;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
