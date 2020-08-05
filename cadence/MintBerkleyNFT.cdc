@@ -1,18 +1,17 @@
-import BerkleyNFTContract from 0x01cf0e2f2f715450 
+import BerkleyNFTContract from 0x6c820df8a4654c07 
 
-transaction(message: String?) {
-    prepare(account: AuthAccount) {
+transaction() {
+    prepare(account: AuthAccount, message: String?) {
+        let oldBerkleyNFT: @BerkleyNFTContract.BerkleyNFT <- account.load(from: "/storage/BerkleyNFT")
+
+        if (oldBerkleyNFT != nil) {
+            destroy oldBerkleyNFT
+        }
+        
         let BerkleyNFT: @BerkleyNFTContract.BerkleyNFT <- BerkleyNFTContract.mintBerkleyNFT(message: message)
 
         account.save(<-BerkleyNFT, to: /storage/BerkleyNFT)
         account.link<&BerkleyNFTContract.BerkleyNFT{BerkleyNFTContract.BerkleyNFTInterface}>(/public/BerkleyNFT, target: /storage/BerkleyNFT)
-    }
-    
-    post {
-        // Check that the capabilities were created correctly
-        getAccount(0x01cf0e2f2f715450).getCapability(/public/BerkleyNFT)!
-                        .check<&BerkleyNFTContract.BerkleyNFT{BerkleyNFTContract.BerkleyNFTInterface}>():  
-                        "Identity Reference was not created correctly"
     }
 }
  

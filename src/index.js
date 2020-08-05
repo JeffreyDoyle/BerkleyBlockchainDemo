@@ -10,12 +10,23 @@ import "./app.scss"
 window.fcl = fcl
 window.types = t
 
+window.convertToHex = function(str) {
+    return Buffer.from(str, "utf8").reduce(
+        (output, elem) => output + ("0" + elem.toString(16)).slice(-2),
+        ""
+      )
+}
+
+//window.BERKELEY_NFT_CONTRACT_ADDRESS = "0x179b6b1cb6755e31" // Emulator
+window.BERKELEY_NFT_CONTRACT_ADDRESS = "0x8d70ad6953de1e42" // Testnet
+
 fcl.config()
-  .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
-  .put("accessNode.api", "http://localhost:8080")
+    // .put("accessNode.api", "http://localhost:8080")
+    // .put("challenge.handshake", "http://localhost:8701/flow/authenticate");
+    .put("accessNode.api", "https://access-testnet.onflow.org")
+    .put("challenge.handshake", "https://flow-wallet-staging.blocto.app/authn");
 
 const AppContainer = () => {
-    const [message, setMessage] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect(() => {
@@ -29,7 +40,7 @@ const AppContainer = () => {
     return (
         <div>
             {
-                ! loggedIn ?
+                !loggedIn ?
                     <SignIn />
                     :
                     <App />
