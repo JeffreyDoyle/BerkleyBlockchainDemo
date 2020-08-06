@@ -6,23 +6,40 @@
 
     height: 100vh;
 
-    background: rgb(50,66,255);
-    background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+    // background: rgb(50,66,255);
+    // background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+
+    background: #222222;
+    background: linear-gradient(90deg, #222222 25%, #18191c 100%);
 
     color: white;
 }
 
 .AppTitle {
     font-size: 2rem;
-    margin-bottom: 5rem;
-    text-decoration: underline;
+    margin-bottom: 3rem;
+    background-color: #18191c;
+    color: white;
+    border: 0.2rem solid #ffc834;
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
 .AppUserInfo {
     display: flex;
     flex-direction: row;
+    align-items: center;
     button {
         margin-left: 1rem;
+        -webkit-appearance: none;
+        border: none;
+        background-color: white;
+        color: black;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
     margin-bottom: 3rem;
 }
@@ -34,7 +51,7 @@
         border: none;
         background-color: white;
         color: black;
-        padding: 1rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
         font-size: 1rem;
         border-radius: 0.2rem;
         cursor: pointer;
@@ -55,7 +72,13 @@
 
 .AppMyNFT {
     h2 {
-        text-decoration: underline;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        background-color: #18191c;
+        color: white;
+        border: 0.2rem solid #ffc834;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
     }
     display: flex;
     flex-direction: column;
@@ -72,7 +95,7 @@
         border: none;
         background-color: white;
         color: black;
-        padding: 1rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
         font-size: 1rem;
         border-radius: 0.2rem;
         cursor: pointer;
@@ -93,7 +116,13 @@
 
 .TheirNFT {
     h2 {
-        text-decoration: underline;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        background-color: #18191c;
+        color: white;
+        border: 0.2rem solid #ffc834;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
     }
     display: flex;
     flex-direction: column;

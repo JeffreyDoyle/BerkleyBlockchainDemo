@@ -8,12 +8,20 @@
 
     // background: rgb(255,60,60);
     // background: linear-gradient(90deg, rgba(255,60,60,1) 0%, rgba(82,110,252,1) 40%, rgba(39,248,255,1) 100%);
-    background: rgb(50,66,255);
-    background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+    // background: rgb(50,66,255);
+    // background: linear-gradient(90deg, rgba(50,66,255,1) 25%, rgba(44,185,255,1) 77%, rgba(0,255,241,1) 100%);
+    background: #222222;
+    background: linear-gradient(90deg, #222222 25%, #18191c 100%);
 }
 
 .SignInTitle {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    background-color: #18191c;
     color: white;
+    border: 0.2rem solid #ffc834;
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
 .SignInButton {

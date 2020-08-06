@@ -7,7 +7,9 @@ export const App = () => {
     const [messageInput, setMessageInput] = useState("")
     const [addressInput, setAddressInput] = useState("")
     const [myBerkleyNFTMessage, setMyBerkleyNFTMessage] = useState("")
+    const [loadingMyBerkeleyNFTMessage, setLoadingMyBerkeleyNFTMessage] = useState(false)
     const [theirBerkleyNFTMessage, setTheirBerkleyNFTMessage] = useState("")
+    const [loadingTheirBerkeleyNFTMessage, setLoadingTheirBerkeleyNFTMessage] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
     const [curerntUserLoaded, setCurrentUserLoaded] = useState(false);
 
@@ -36,7 +38,7 @@ export const App = () => {
                 pub fun main(): String? {
                     let BerkeleyNFTCapability = getAccount(${addr}).getCapability(/public/BerkeleyNFT)
                     
-                    if (BerkeleyNFTCapability == nil) {
+                    if (BerkeleyNFTCapability! == nil) {
                         return ""
                     }
 
@@ -81,29 +83,46 @@ export const App = () => {
     return (
         <div className="App">
             <div className="AppTitle">
-                Blockchain@Berkley FCL Demo
+                Blockchain@Berkeley FCL Demo
             </div>
             <div className="AppUserInfo">
                 <div>Address: 0x{currentUser && currentUser.addr}</div>
                 <button onClick={fcl.unauthenticate}>Sign Out</button>
             </div>
             <div className="AppMintNFT">
-                <button onClick={mintBerkleyNFT}>Mint a BerkleyNFT</button>
-                <input value={messageInput} placeholder="My NFT's Message" onChange={e => setMessageInput(e.target.value)} type="text" />
+                <button onClick={async () => {
+                    setLoadingMyBerkeleyNFTMessage(true)
+                    await mintBerkleyNFT()
+                    setLoadingMyBerkeleyNFTMessage(false)
+                }}>Mint a BerkeleyNFT</button>
+                <input value={messageInput} placeholder="My NFT's Message" onChange={e => setMessageInput(e.target.value)} type="text" />        
             </div>
             <div className="AppMyNFT">
                 <h2>My BerkleyNFT</h2>
-                <p>{myBerkleyNFTMessage || "My BerkleyNFT Message Placeholder"}</p>
+                {
+                    loadingMyBerkeleyNFTMessage ?
+                        "...Loading..."
+                        :
+                        <p>{myBerkleyNFTMessage || "My BerkleyNFT Message Placeholder"}</p>
+                }
             </div>
-            <br />
             <div className="AppReadNFT">
-                <button onClick={async () => setTheirBerkleyNFTMessage(await readBerkleyNFTMessage(addressInput))}>Read someones BerkleyNFT</button>
+                <button onClick={async () => {
+                    setLoadingTheirBerkeleyNFTMessage(true)
+                    setTheirBerkleyNFTMessage(await readBerkleyNFTMessage(addressInput))
+                    setLoadingTheirBerkeleyNFTMessage(false)
+                }}>Read someones BerkeleyNFT</button>
                 <input value={addressInput} placeholder="Flow Address" onChange={e => setAddressInput(e.target.value)} type="text" />
             </div>
             <div className="TheirNFT">
                 <h2>Their BerkleyNFT</h2>
-                <p>{theirBerkleyNFTMessage || "Their BerkleyNFT Message Placeholder"}</p>
-            </div>
+                {
+                    loadingTheirBerkeleyNFTMessage ?
+                        "...Loading..."
+                        :
+                        <p>{theirBerkleyNFTMessage || "Their BerkleyNFT Message Placeholder"}</p>
+                }
+            </div>  
         </div>
     )
 }

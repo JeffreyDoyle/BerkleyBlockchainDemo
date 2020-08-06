@@ -17,21 +17,20 @@ window.convertToHex = function(str) {
       )
 }
 
-//window.BERKELEY_NFT_CONTRACT_ADDRESS = "0x179b6b1cb6755e31" // Emulator
+// window.BERKELEY_NFT_CONTRACT_ADDRESS = "0x179b6b1cb6755e31" // Emulator
 window.BERKELEY_NFT_CONTRACT_ADDRESS = "0x8d70ad6953de1e42" // Testnet
 
 fcl.config()
-    // .put("accessNode.api", "http://localhost:8080")
-    // .put("challenge.handshake", "http://localhost:8701/flow/authenticate");
-    .put("accessNode.api", "https://access-testnet.onflow.org")
-    .put("challenge.handshake", "https://flow-wallet-staging.blocto.app/authn");
+    .put("accessNode.api", "http://localhost:8080")
+    .put("challenge.handshake", "http://localhost:8701/flow/authenticate");
+    // .put("accessNode.api", "https://access-testnet.onflow.org")
+    // .put("challenge.handshake", "https://flow-wallet-staging.blocto.app/authn");
 
 const AppContainer = () => {
     const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect(() => {
         fcl.currentUser().subscribe(user => {
-            console.log('>> User', user)
             if (user.loggedIn) setLoggedIn(true)
             else setLoggedIn(false)
         })

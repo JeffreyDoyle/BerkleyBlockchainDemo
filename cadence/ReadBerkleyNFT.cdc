@@ -1,12 +1,11 @@
-import BerkleyNFTContract from 0x6c820df8a4654c07
-
-pub fun main(address: Address): String {
-    let BerkleyNFTCapability = getAccount(address).getCapability(/public/BerkleyNFT)
+import BerkeleyNFTContract from ${BERKELEY_NFT_CONTRACT_ADDRESS}
+pub fun main(): String? {
+    let BerkeleyNFTCapability = getAccount(${addr}).getCapability(/public/BerkeleyNFT)
     
-    if (BerkleyNFTCapability == nil) {
+    if (BerkeleyNFTCapability! == nil) {
         return ""
     }
 
-    let BerkleyNFTRef = BerkleyNFTCapability.borrow<&BerkleyNFTContract.BerkleyNFT{BerkleyNFTContract.BerkleyNFTInterface}>() as &BerkleyNFTContract.BerkleyNFT{BerkleyNFTContract.BerkleyNFTInterface}
-    return BerkleyNFTRef.getMessage()
+    let BerkeleyNFTRef = BerkeleyNFTCapability!.borrow<&BerkeleyNFTContract.BerkeleyNFT{BerkeleyNFTContract.BerkeleyNFTInterface}>()!
+    return BerkeleyNFTRef.getMessage()
 }

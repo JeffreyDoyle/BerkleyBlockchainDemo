@@ -1,17 +1,12 @@
-import BerkleyNFTContract from 0x6c820df8a4654c07 
-
-transaction() {
-    prepare(account: AuthAccount, message: String?) {
-        let oldBerkleyNFT: @BerkleyNFTContract.BerkleyNFT <- account.load(from: "/storage/BerkleyNFT")
-
-        if (oldBerkleyNFT != nil) {
-            destroy oldBerkleyNFT
-        }
+import BerkeleyNFTContract from ${BERKELEY_NFT_CONTRACT_ADDRESS}
+transaction(message: String) {
+    prepare(account: AuthAccount) {
+        let oldBerkeleyNFT <- account.load<@BerkeleyNFTContract.BerkeleyNFT>(from: /storage/BerkeleyNFT)
+        destroy oldBerkeleyNFT
         
-        let BerkleyNFT: @BerkleyNFTContract.BerkleyNFT <- BerkleyNFTContract.mintBerkleyNFT(message: message)
+        let BerkeleyNFT: @BerkeleyNFTContract.BerkeleyNFT <- BerkeleyNFTContract.mintBerkeleyNFT(message: message)
 
-        account.save(<-BerkleyNFT, to: /storage/BerkleyNFT)
-        account.link<&BerkleyNFTContract.BerkleyNFT{BerkleyNFTContract.BerkleyNFTInterface}>(/public/BerkleyNFT, target: /storage/BerkleyNFT)
+        account.save(<-BerkeleyNFT, to: /storage/BerkeleyNFT)
+        account.link<&BerkeleyNFTContract.BerkeleyNFT{BerkeleyNFTContract.BerkeleyNFTInterface}>(/public/BerkeleyNFT, target: /storage/BerkeleyNFT)
     }
 }
- 
