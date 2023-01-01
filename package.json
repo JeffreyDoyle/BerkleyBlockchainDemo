@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/JeffreyDoyle/BerkleyBlockchainDemo#readme",
   "devDependencies": {
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "sass": "^1.26.10"
   },
   "dependencies": {
